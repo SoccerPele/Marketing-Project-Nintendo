@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — Nintendo eShop Game Finder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark">N</div>
+      eShop Game Finder
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="other-products.html" class="nav-link">Products</a>
+      <a href="profile.html" class="nav-link active">My Profile</a>
+      <a href="quiz.html" class="nav-link quiz-cta">Take the Quiz</a>
+    </div>
+  </div>
+</nav>
+
+<div class="profile-wrap">
+
+  <!-- Profile hero -->
+  <div class="profile-hero">
+    <div class="avatar">🎮</div>
+    <div style="flex:1">
+      <div class="profile-name">Mario</div>
+      <div class="profile-since">Nintendo Account · Member since September 1985</div>
+      <div class="profile-stats">
+        <div><div class="stat-val">24</div><div class="stat-lbl">Games Owned</div></div>
+        <div><div class="stat-val">3</div><div class="stat-lbl">Quizzes Taken</div></div>
+        <div><div class="stat-val">Gold</div><div class="stat-lbl">My Nintendo Tier</div></div>
+      </div>
+    </div>
+    <button class="btn btn-secondary" style="flex-shrink:0; align-self:flex-start;" onclick="alert('Account settings would open here.')">Edit Profile</button>
+  </div>
+
+  <!-- Quiz result panel (populated by JS from localStorage) -->
+  <div class="p-card" id="quizResultCard">
+    <div class="p-card-title">🎯 Your Latest Quiz Result</div>
+    <div id="quizResultContent">
+      <div style="text-align:center; padding:24px 0; color:var(--text-muted);">
+        <div style="font-size:2.5rem; margin-bottom:12px;">📋</div>
+        <p style="margin-bottom:16px; font-size:0.9rem;">You haven't taken the quiz yet.<br>Answer three quick questions to get your first recommendation.</p>
+        <a href="quiz.html" class="btn btn-primary">Take the Quiz →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Purchase history -->
+  <div class="p-card">
+    <div class="p-card-title">🛒 Recent Purchases</div>
+
+    <div class="purchase-row">
+      <div class="p-icon">🌌</div>
+      <div class="p-name">Zelda: Tears of the Kingdom</div>
+      <div class="p-date">May 12, 2026</div>
+      <div class="p-price">$69.99</div>
+    </div>
+    <div class="purchase-row">
+      <div class="p-icon">🎉</div>
+      <div class="p-name">Mario Party Superstars</div>
+      <div class="p-date">Apr 3, 2026</div>
+      <div class="p-price">$59.99</div>
+    </div>
+    <div class="purchase-row">
+      <div class="p-icon">⚡</div>
+      <div class="p-name">Pokémon Scarlet</div>
+      <div class="p-date">Feb 14, 2026</div>
+      <div class="p-price">$59.99</div>
+    </div>
+    <div class="purchase-row">
+      <div class="p-icon">🌸</div>
+      <div class="p-name">Kirby: Forgotten Land</div>
+      <div class="p-date">Jan 8, 2026</div>
+      <div class="p-price">$59.99</div>
+    </div>
+    <div class="purchase-row">
+      <div class="p-icon">🗡️</div>
+      <div class="p-name">Zelda: Breath of the Wild</div>
+      <div class="p-date">Dec 25, 2025</div>
+      <div class="p-price">$59.99</div>
+    </div>
+    <div class="purchase-row">
+      <div class="p-icon">🌾</div>
+      <div class="p-name">Stardew Valley</div>
+      <div class="p-date">Nov 29, 2025</div>
+      <div class="p-price">$14.99</div>
+    </div>
+
+    <div style="text-align:center; margin-top:18px;">
+      <button class="btn btn-secondary" style="font-size:0.82rem; padding:9px 18px;" onclick="alert('Full purchase history would open here.')">View All 24 Purchases</button>
+    </div>
+  </div>
+
+  <!-- Personalized recommendations (from purchase history analysis) -->
+  <div class="p-card">
+    <div class="p-card-title">✨ Recommended For You — Based on Your Library</div>
+    <p style="color:var(--text-muted); font-size:0.82rem; margin-bottom:16px;">We analyzed your purchase history and found games you're likely to love.</p>
+
+    <div class="rec-row">
+      <div class="rec-rank">#1</div>
+      <div class="p-icon">🌟</div>
+      <div class="rec-row-info">
+        <h4>Xenoblade Chronicles 3</h4>
+        <p>JRPG · $59.99 — You loved Tears of the Kingdom's deep story</p>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-label">92% match</div>
+        <div class="match-bar"><div class="match-fill" style="width:92%"></div></div>
+      </div>
+    </div>
+
+    <div class="rec-row">
+      <div class="rec-rank">#2</div>
+      <div class="p-icon">⚔️</div>
+      <div class="rec-row-info">
+        <h4>Fire Emblem: Three Houses</h4>
+        <p>Strategy RPG · $59.99 — Based on your RPG purchase history</p>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-label">88% match</div>
+        <div class="match-bar"><div class="match-fill" style="width:88%"></div></div>
+      </div>
+    </div>
+
+    <div class="rec-row">
+      <div class="rec-rank">#3</div>
+      <div class="p-icon">🏝️</div>
+      <div class="rec-row-info">
+        <h4>Animal Crossing: New Horizons</h4>
+        <p>Life Sim · $59.99 — Complements your Stardew Valley play style</p>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-label">84% match</div>
+        <div class="match-bar"><div class="match-fill" style="width:84%"></div></div>
+      </div>
+    </div>
+
+    <div class="rec-row">
+      <div class="rec-rank">#4</div>
+      <div class="p-icon">👻</div>
+      <div class="rec-row-info">
+        <h4>Luigi's Mansion 3</h4>
+        <p>Adventure · $59.99 — Fans of Mario Party love this title</p>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-label">79% match</div>
+        <div class="match-bar"><div class="match-fill" style="width:79%"></div></div>
+      </div>
+    </div>
+
+    <div class="rec-row">
+      <div class="rec-rank">#5</div>
+      <div class="p-icon">🌿</div>
+      <div class="rec-row-info">
+        <h4>Pikmin 4</h4>
+        <p>Strategy · $59.99 — Relaxing and charming like Stardew Valley</p>
+      </div>
+      <div class="match-bar-wrap">
+        <div class="match-label">75% match</div>
+        <div class="match-bar"><div class="match-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+      <a href="quiz.html" class="btn btn-primary">Refine with Quiz →</a>
+      <a href="other-products.html" class="btn btn-secondary">Browse Products</a>
+    </div>
+  </div>
+
+  <!-- Taste summary -->
+  <div class="p-card">
+    <div class="p-card-title">📊 Your Taste Profile</div>
+    <p style="color:var(--text-muted); font-size:0.82rem; margin-bottom:24px;">Derived from your purchase history — retake the quiz to update your preferences.</p>
+
+    <div style="display:grid; gap:16px;">
+
+      <div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="font-size:0.85rem; font-weight:600;">Relaxation Level</span>
+          <span style="font-size:0.85rem; color:var(--text-muted);" id="relaxLabel">Balanced</span>
+        </div>
+        <div style="height:8px; background:var(--surface-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; width:60%; background:var(--red); border-radius:100px; transition:width 1s ease;" id="relaxBar"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:4px; font-size:0.7rem; color:var(--text-muted);">
+          <span>🔥 Intense</span><span>😌 Chill</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="font-size:0.85rem; font-weight:600;">Social Preference</span>
+          <span style="font-size:0.85rem; color:var(--text-muted);" id="socialLabel">Leans Social</span>
+        </div>
+        <div style="height:8px; background:var(--surface-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; width:70%; background:#4CAF50; border-radius:100px; transition:width 1s ease;" id="socialBar"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:4px; font-size:0.7rem; color:var(--text-muted);">
+          <span>🧍 Solo</span><span>👥 Multiplayer</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="font-size:0.85rem; font-weight:600;">Story Depth</span>
+          <span style="font-size:0.85rem; color:var(--text-muted);" id="narrativeLabel">Story-Driven</span>
+        </div>
+        <div style="height:8px; background:var(--surface-2); border-radius:100px; overflow:hidden;">
+          <div style="height:100%; width:80%; background:#9C27B0; border-radius:100px; transition:width 1s ease;" id="narrativeBar"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:4px; font-size:0.7rem; color:var(--text-muted);">
+          <span>🕹️ Gameplay</span><span>📖 Narrative</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- My Nintendo Points -->
+  <div class="p-card" style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+    <div style="font-size:2.5rem; flex-shrink:0;">⭐</div>
+    <div style="flex:1">
+      <div style="font-size:0.95rem; font-weight:700; margin-bottom:4px;">My Nintendo Gold Points</div>
+      <div style="color:var(--text-muted); font-size:0.82rem;">You have <strong style="color:#FFD700;">1,340 Gold Points</strong> available (~$13.40 value). Points expire December 31, 2026.</div>
+    </div>
+    <button class="btn btn-secondary" style="flex-shrink:0;" onclick="alert('Redeem points at checkout in the eShop.')">Redeem Points</button>
+  </div>
+
+</div><!-- /profile-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-text">© 2026 Nintendo of America Inc. &nbsp;·&nbsp; Profile data shown is simulated for this concept prototype.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="quiz.html">Take the Quiz</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#">Privacy Settings</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Load quiz result from localStorage if available
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('quizResult');
+  if (saved) {
+    try {
+      const r = JSON.parse(saved);
+      const desc1 = { 1:"Intense", 2:"Action-leaning", 3:"Balanced", 4:"Relaxing", 5:"Very Chill" };
+      const desc2 = { 1:"Solo", 2:"Mostly Solo", 3:"Mixed", 4:"Social", 5:"Always Multiplayer" };
+      const desc3 = { 1:"Gameplay First", 2:"Light Story", 3:"Balanced", 4:"Story-Driven", 5:"Narrative Focused" };
+
+      document.getElementById('quizResultContent').innerHTML = `
+        <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
+          <div style="background:var(--surface-2); border-radius:10px; padding:16px; flex:1; min-width:200px;">
+            <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:8px;">Top Match · ${r.date}</div>
+            <div style="font-size:1.1rem; font-weight:900; margin-bottom:3px;">${r.top.icon} ${r.top.name}</div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">${r.top.genre} · ${r.top.price}</div>
+          </div>
+          <div style="background:var(--surface-2); border-radius:10px; padding:16px; flex:1; min-width:200px;">
+            <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:10px;">Your Answers</div>
+            <div style="font-size:0.82rem; margin-bottom:5px;">🎮 Relaxation: <strong>${desc1[r.answers.relaxation]}</strong></div>
+            <div style="font-size:0.82rem; margin-bottom:5px;">👥 Social: <strong>${desc2[r.answers.social]}</strong></div>
+            <div style="font-size:0.82rem;">📖 Story: <strong>${desc3[r.answers.narrative]}</strong></div>
+          </div>
+        </div>
+        <div style="margin-top:14px; display:flex; gap:10px;">
+          <a href="quiz.html" class="btn btn-secondary" style="font-size:0.82rem; padding:9px 16px;">Retake Quiz</a>
+          <button class="btn btn-ghost" style="font-size:0.82rem; padding:9px 12px;" onclick="clearResult()">Clear Result</button>
+        </div>
+      `;
+
+      // Update taste bars based on quiz answers
+      const a = r.answers;
+      document.getElementById('relaxBar').style.width = ((a.relaxation / 5) * 100) + '%';
+      document.getElementById('socialBar').style.width = ((a.social / 5) * 100) + '%';
+      document.getElementById('narrativeBar').style.width = ((a.narrative / 5) * 100) + '%';
+
+      const descR = { 1:"Intense", 2:"Action-leaning", 3:"Balanced", 4:"Relaxing", 5:"Very Chill" };
+      const descS = { 1:"Solo", 2:"Mostly Solo", 3:"Mixed", 4:"Social", 5:"Always Multiplayer" };
+      const descN = { 1:"Gameplay First", 2:"Light Story", 3:"Balanced", 4:"Story-Driven", 5:"Narrative Focused" };
+      document.getElementById('relaxLabel').textContent    = descR[a.relaxation];
+      document.getElementById('socialLabel').textContent   = descS[a.social];
+      document.getElementById('narrativeLabel').textContent = descN[a.narrative];
+
+    } catch(e) { /* malformed data — show default state */ }
+  }
+});
+
+function clearResult() {
+  localStorage.removeItem('quizResult');
+  location.reload();
+}
+</script>
+
+</body>
+</html>

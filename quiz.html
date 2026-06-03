@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Finder Quiz — Nintendo eShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark">N</div>
+      eShop Game Finder
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="other-products.html" class="nav-link">Products</a>
+      <a href="profile.html" class="nav-link">My Profile</a>
+      <a href="quiz.html" class="nav-link active quiz-cta">Take the Quiz</a>
+    </div>
+  </div>
+</nav>
+
+<div class="quiz-wrap">
+
+  <!-- Header -->
+  <div class="quiz-header">
+    <div class="section-label" style="text-align:center">Game Finder Quiz</div>
+    <h1 style="font-size:clamp(1.6rem,4vw,2.4rem); font-weight:900; margin-bottom:8px;">What kind of gamer are you?</h1>
+    <p style="color:var(--text-muted); font-size:0.9rem;">Answer 3 quick questions. We'll do the rest.</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  </div>
+
+  <!-- ─── QUESTION 1 ─── -->
+  <div class="q-card active" id="q1">
+    <div class="q-label">Question 1 of 3</div>
+    <div class="q-text">How relaxing should your game feel?</div>
+    <div class="q-sub">Think about your ideal gaming session — peaceful chill-out or heart-pounding action?</div>
+
+    <div class="slider-labels">
+      <span>🔥 Intense &amp; Action-packed</span>
+      <span>😌 Calm &amp; Laid-back</span>
+    </div>
+    <input type="range" id="s1" min="1" max="5" value="3" oninput="updateSlider(1)">
+    <div class="slider-val" id="v1">3</div>
+    <div class="slider-desc" id="d1"></div>
+
+    <div class="q-nav">
+      <span style="color:var(--text-muted); font-size:0.82rem;">← Back</span>
+      <button class="btn btn-primary" onclick="nextQ(1)">Next →</button>
+    </div>
+  </div>
+
+  <!-- ─── QUESTION 2 ─── -->
+  <div class="q-card" id="q2">
+    <div class="q-label">Question 2 of 3</div>
+    <div class="q-text">How much do you love multiplayer?</div>
+    <div class="q-sub">Do you want company on your adventure, or do you prefer to go it alone?</div>
+
+    <div class="slider-labels">
+      <span>🧍 Solo — just me</span>
+      <span>👥 Always with others</span>
+    </div>
+    <input type="range" id="s2" min="1" max="5" value="3" oninput="updateSlider(2)">
+    <div class="slider-val" id="v2">3</div>
+    <div class="slider-desc" id="d2"></div>
+
+    <div class="q-nav">
+      <button class="btn btn-ghost" onclick="prevQ(2)">← Back</button>
+      <button class="btn btn-primary" onclick="nextQ(2)">Next →</button>
+    </div>
+  </div>
+
+  <!-- ─── QUESTION 3 ─── -->
+  <div class="q-card" id="q3">
+    <div class="q-label">Question 3 of 3</div>
+    <div class="q-text">How important is a deep story?</div>
+    <div class="q-sub">Are you here for the plot and characters, or pure gameplay thrills?</div>
+
+    <div class="slider-labels">
+      <span>🕹️ Pure gameplay</span>
+      <span>📖 Rich narrative</span>
+    </div>
+    <input type="range" id="s3" min="1" max="5" value="3" oninput="updateSlider(3)">
+    <div class="slider-val" id="v3">3</div>
+    <div class="slider-desc" id="d3"></div>
+
+    <div class="q-nav">
+      <button class="btn btn-ghost" onclick="prevQ(3)">← Back</button>
+      <button class="btn btn-primary" onclick="showResults()">See My Matches ✨</button>
+    </div>
+  </div>
+
+  <!-- ─── RESULTS ─── -->
+  <div class="result-card" id="results">
+    <div class="result-top">
+      <div class="result-badge">✓ Your Results Are In</div>
+      <h2>Your Top Pick</h2>
+      <p id="resultBlurb" style="color:var(--text-muted); font-size:0.88rem; margin-top:4px;"></p>
+    </div>
+
+    <!-- Primary recommendation -->
+    <div class="rec-main" id="primaryRec"></div>
+
+    <!-- Also consider -->
+    <div class="also-like">
+      <h4>You might also like</h4>
+      <div class="also-grid" id="secondaryRecs"></div>
+    </div>
+
+    <div class="result-actions">
+      <button class="btn btn-primary" onclick="retakeQuiz()">↺ Retake Quiz</button>
+      <a href="profile.html" class="btn btn-secondary">Save to Profile</a>
+      <a href="other-products.html" class="btn btn-secondary">Browse Products</a>
+    </div>
+  </div>
+
+</div><!-- /quiz-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-text">© 2026 Nintendo of America Inc. &nbsp;·&nbsp; Concept prototype.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="faq.html">FAQ</a>
+      <a href="profile.html">My Profile</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Game database ──────────────────────────────────────────────────────────
+// Each game is scored on three axes (1–5):
+//   relaxation : 1=intense, 5=chill
+//   social     : 1=solo,    5=always multiplayer
+//   narrative  : 1=no story, 5=rich narrative
+const GAMES = [
+  { name:"Animal Crossing: New Horizons", relaxation:5, social:4, narrative:1, price:"$59.99", genre:"Life Simulation", icon:"🏝️", color:"#7BC67E", desc:"Create your dream island paradise. Fish, catch bugs, decorate your home, and visit friends online in this charming life simulator." },
+  { name:"Stardew Valley",                relaxation:5, social:2, narrative:3, price:"$14.99", genre:"Farm Simulation",  icon:"🌾", color:"#8BC34A", desc:"Escape to the countryside, build the farm of your dreams, and uncover the secrets of Pelican Town at your own pace." },
+  { name:"Zelda: Breath of the Wild",     relaxation:3, social:1, narrative:4, price:"$59.99", genre:"Action Adventure", icon:"🗡️", color:"#4CAF50", desc:"Explore a vast open world, solve creative puzzles, and uncover the legend of Calamity Ganon across Hyrule." },
+  { name:"Zelda: Tears of the Kingdom",   relaxation:3, social:1, narrative:5, price:"$69.99", genre:"Action Adventure", icon:"🌌", color:"#66BB6A", desc:"Build, fly, and fight your way across a transformed Hyrule in this massive sequel filled with mystery and invention." },
+  { name:"Super Smash Bros. Ultimate",    relaxation:1, social:5, narrative:1, price:"$59.99", genre:"Fighting",         icon:"🥊", color:"#F44336", desc:"Every fighter, every stage — the ultimate crossover brawl. Perfect for competitive nights and couch chaos." },
+  { name:"Mario Kart 8 Deluxe",           relaxation:3, social:5, narrative:1, price:"$59.99", genre:"Racing",           icon:"🏎️", color:"#FF9800", desc:"Race 96 tracks with friends and family. The most complete Mario Kart experience, perfect for any occasion." },
+  { name:"Splatoon 3",                    relaxation:2, social:4, narrative:2, price:"$59.99", genre:"Shooter",          icon:"🦑", color:"#FF5722", desc:"Ink your way to victory in colorful team battles. Paint the arena, splat opponents, and rise through the ranks." },
+  { name:"Pokémon Scarlet",               relaxation:3, social:3, narrative:3, price:"$59.99", genre:"RPG",              icon:"⚡", color:"#FFEB3B", desc:"Explore the open-world Paldea region, catch hundreds of Pokémon, and battle your way to become a Champion." },
+  { name:"Metroid Dread",                 relaxation:1, social:1, narrative:4, price:"$39.99", genre:"Action",           icon:"🚀", color:"#607D8B", desc:"Survive the hostile planet ZDR as Samus Aran in this intense, atmospheric Metroidvania thriller." },
+  { name:"Fire Emblem: Three Houses",     relaxation:3, social:1, narrative:5, price:"$59.99", genre:"Strategy RPG",     icon:"⚔️", color:"#9C27B0", desc:"Lead students, forge deep relationships, and guide them through a war that reshapes a continent's fate." },
+  { name:"Kirby: Forgotten Land",         relaxation:5, social:2, narrative:3, price:"$59.99", genre:"Platformer",       icon:"🌸", color:"#FF80AB", desc:"Kirby explores a mysterious post-civilisation world in this charming, accessible 3D platformer for all ages." },
+  { name:"Mario Party Superstars",        relaxation:4, social:5, narrative:1, price:"$59.99", genre:"Party",            icon:"🎉", color:"#E91E63", desc:"100 classic mini-games and beloved boards from the series' past. The definitive party game for groups." },
+  { name:"Super Mario Odyssey",           relaxation:4, social:1, narrative:2, price:"$59.99", genre:"Platformer",       icon:"🎩", color:"#E53935", desc:"Travel across incredible kingdoms with Cappy and collect Power Moons to save Princess Peach." },
+  { name:"Minecraft",                     relaxation:4, social:4, narrative:1, price:"$29.99", genre:"Sandbox",          icon:"⛏️", color:"#795548", desc:"Build, survive, and explore an infinite world. Play solo or team up with friends in creative or survival mode." },
+  { name:"Ring Fit Adventure",            relaxation:2, social:1, narrative:2, price:"$79.99", genre:"Fitness RPG",      icon:"💪", color:"#00BCD4", desc:"Defeat enemies using real physical exercises and progress through a fun RPG while actually working out." },
+  { name:"Xenoblade Chronicles 3",        relaxation:2, social:1, narrative:5, price:"$59.99", genre:"JRPG",             icon:"🌟", color:"#3F51B5", desc:"An emotionally rich JRPG epic spanning hundreds of hours, filled with unforgettable characters and battles." },
+  { name:"Pikmin 4",                      relaxation:4, social:1, narrative:3, price:"$59.99", genre:"Strategy",         icon:"🌿", color:"#66BB6A", desc:"Command adorable Pikmin creatures to explore, collect treasures, and rescue castaways in a charming strategy adventure." },
+  { name:"Luigi's Mansion 3",             relaxation:4, social:2, narrative:3, price:"$59.99", genre:"Adventure",        icon:"👻", color:"#43A047", desc:"Guide Luigi through a haunted hotel, vacuuming up ghosts and solving puzzles floor by floor." },
+];
+
+// ── Slider description maps ────────────────────────────────────────────────
+const DESC1 = { 1:"Non-stop adrenaline — bring it on!", 2:"Mostly intense with some breathers", 3:"Balanced — a bit of both", 4:"Mostly relaxing with light challenge", 5:"Pure chill vibes only" };
+const DESC2 = { 1:"I prefer flying solo", 2:"Occasional co-op is fine", 3:"Mix of solo and social", 4:"I love teaming up", 5:"The more the merrier!" };
+const DESC3 = { 1:"Just gameplay — skip the cutscenes", 2:"A light story is fine", 3:"Good story is a bonus", 4:"I love a well-told story", 5:"I'm here for the narrative" };
+
+let answers = { relaxation: 3, social: 3, narrative: 3 };
+
+function updateSlider(n) {
+  const val = parseInt(document.getElementById('s' + n).value);
+  document.getElementById('v' + n).textContent = val;
+  const descs = [DESC1, DESC2, DESC3];
+  document.getElementById('d' + n).textContent = descs[n - 1][val];
+
+  // Update track fill colour
+  const pct = ((val - 1) / 4) * 100;
+  const slider = document.getElementById('s' + n);
+  slider.style.background = `linear-gradient(to right, var(--red) ${pct}%, var(--surface-2) ${pct}%)`;
+}
+
+function setProgress(step) {
+  document.getElementById('progressFill').style.width = (step / 3 * 100) + '%';
+}
+
+function show(id) {
+  ['q1','q2','q3','results'].forEach(x => {
+    const el = document.getElementById(x);
+    el.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+}
+
+function nextQ(current) {
+  answers['relaxation'] = parseInt(document.getElementById('s1').value);
+  answers['social']     = parseInt(document.getElementById('s2').value);
+  answers['narrative']  = parseInt(document.getElementById('s3').value);
+  setProgress(current);
+  show('q' + (current + 1));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevQ(current) {
+  show('q' + (current - 1));
+}
+
+function showResults() {
+  answers['relaxation'] = parseInt(document.getElementById('s1').value);
+  answers['social']     = parseInt(document.getElementById('s2').value);
+  answers['narrative']  = parseInt(document.getElementById('s3').value);
+  setProgress(3);
+
+  // Rank all games by Euclidean distance (lower = better match)
+  const ranked = GAMES.map(g => {
+    const dist = Math.sqrt(
+      Math.pow(g.relaxation - answers.relaxation, 2) +
+      Math.pow(g.social     - answers.social, 2) +
+      Math.pow(g.narrative  - answers.narrative, 2)
+    );
+    return { ...g, dist };
+  }).sort((a, b) => a.dist - b.dist);
+
+  const top    = ranked[0];
+  const second = ranked.slice(1, 5);
+
+  // Build result blurb
+  const traits = [];
+  if (answers.relaxation >= 4) traits.push('relaxing');
+  else if (answers.relaxation <= 2) traits.push('high-intensity');
+  else traits.push('balanced');
+  if (answers.social >= 4) traits.push('social');
+  else if (answers.social <= 2) traits.push('solo-focused');
+  if (answers.narrative >= 4) traits.push('story-driven');
+  else if (answers.narrative <= 2) traits.push('gameplay-first');
+  document.getElementById('resultBlurb').textContent =
+    `Based on your taste for ${traits.join(', ')} games, we found your best match.`;
+
+  // Primary card
+  document.getElementById('primaryRec').innerHTML = `
+    <div class="game-icon-xl" style="background:${top.color}22">${top.icon}</div>
+    <div>
+      <div class="rec-name">${top.name}</div>
+      <div class="rec-genre-tag">${top.genre}</div>
+      <div class="rec-desc">${top.desc}</div>
+      <div class="rec-price">${top.price}</div>
+    </div>
+  `;
+
+  // Secondary cards
+  document.getElementById('secondaryRecs').innerHTML = second.map(g => `
+    <div class="also-card">
+      <div class="also-icon">${g.icon}</div>
+      <div>
+        <div class="also-name">${g.name}</div>
+        <div class="also-genre">${g.genre} · ${g.price}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // Save to localStorage for Profile page
+  localStorage.setItem('quizResult', JSON.stringify({
+    answers,
+    top: { name: top.name, genre: top.genre, icon: top.icon, price: top.price },
+    date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  }));
+
+  show('results');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function retakeQuiz() {
+  answers = { relaxation: 3, social: 3, narrative: 3 };
+  [1,2,3].forEach(n => {
+    document.getElementById('s' + n).value = 3;
+    updateSlider(n);
+  });
+  setProgress(0);
+  show('q1');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init sliders on load
+window.addEventListener('DOMContentLoaded', () => {
+  [1, 2, 3].forEach(n => updateSlider(n));
+});
+</script>
+
+</body>
+</html>

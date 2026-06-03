@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Nintendo eShop Game Finder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark">N</div>
+      eShop Game Finder
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="faq.html" class="nav-link active">FAQ</a>
+      <a href="other-products.html" class="nav-link">Products</a>
+      <a href="profile.html" class="nav-link">My Profile</a>
+      <a href="quiz.html" class="nav-link quiz-cta">Take the Quiz</a>
+    </div>
+  </div>
+</nav>
+
+<div class="faq-wrap">
+
+  <div style="text-align:center; margin-bottom:52px;">
+    <div class="section-label" style="text-align:center">Help &amp; Information</div>
+    <h1 style="font-size:clamp(1.6rem,4vw,2.4rem); font-weight:900; margin-bottom:10px;">Frequently Asked Questions</h1>
+    <p style="color:var(--text-muted); font-size:0.92rem; max-width:480px; margin:0 auto; line-height:1.6;">Everything you need to know about the eShop Game Finder — how it works, how your data is used, and how to get the best results.</p>
+  </div>
+
+  <!-- ABOUT THE FEATURE -->
+  <div class="faq-category-label">About the Feature</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What is the eShop Game Finder?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>The eShop Game Finder is a new personalized recommendation feature built directly into Nintendo's eShop. It combines a short three-question quiz about your gaming preferences with your existing purchase history to surface Switch games you're most likely to enjoy.</p>
+      <p>Think of it as a smart assistant for the eShop — instead of browsing thousands of titles, you get a curated shortlist tailored specifically to you.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      How is this different from the existing eShop recommendations?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>The current eShop shows general "recommended for you" sections based on sales trends and broad categories. The Game Finder goes further by capturing your <em>active</em> preferences through the quiz — your taste for intensity, social play, and storytelling — and blending that with your personal library history.</p>
+      <p>The result is a recommendation that understands not just what you've bought, but what you actually want to play next.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Do I need a Nintendo Account to use the quiz?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>No! You can take the quiz and see recommendations without signing in. However, if you're logged into your Nintendo Account, the engine can also factor in your purchase history for even more accurate picks. Your profile page will reflect your saved results and library data when signed in.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Why only three questions?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>Research shows that users drop off sharply when quizzes exceed 3–5 questions. Our three questions — relaxation level, social preference, and story importance — are the highest-signal dimensions for predicting game satisfaction on Switch. They map to distinct genres cleanly and provide enough signal without friction.</p>
+      <p>We pair them with purchase history (which carries the rest of the weight) to keep the quiz fast while maintaining recommendation quality.</p>
+    </div>
+  </div>
+
+  <!-- HOW RECOMMENDATIONS WORK -->
+  <div class="faq-category-label" style="margin-top:48px;">How Recommendations Work</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      How does the algorithm decide what to recommend?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>Each game in our catalog is scored on the same three dimensions as the quiz (relaxation, social play, narrative depth). When you submit your answers, we calculate the "distance" between your preferences and every game's profile — the closest match becomes your top pick.</p>
+      <p>When purchase history is available, we boost games that are genre-adjacent to your library and reduce suggestions for games you already own.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I get different recommendations by retaking the quiz?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>Yes! Your mood and gaming goals change — that's expected. The quiz is designed to be retaken anytime. If you're in the mood for something new after finishing a long RPG, shift your sliders and the engine will surface something fitting. Past results are saved in your profile so you can compare them over time.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What happens when there's a tie between two games?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>When two games are equally close to your profile, we use secondary signals to break the tie: your purchase history for genre affinity, review scores, and recency of the title. Ties are rare because all three quiz dimensions must match equally across multiple axis simultaneously. Both tied games typically appear in your "you might also like" section.</p>
+    </div>
+  </div>
+
+  <!-- PRIVACY -->
+  <div class="faq-category-label" style="margin-top:48px;">Privacy &amp; Data</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What data does the Game Finder collect?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>The quiz answers (three numeric values, 1–5 each) are processed locally in your browser and are never sent to Nintendo's servers unless you're signed into a Nintendo Account and have opted in to personalization features.</p>
+      <p>If signed in, the feature accesses your eShop purchase history — the same data already stored with your Nintendo Account — to improve recommendations. No new data is collected; existing data is used in a new way.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I opt out of purchase-history personalization?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>Absolutely. You can opt out at any time via <strong>Nintendo Account → Privacy Settings → Personalized Recommendations</strong>. When opted out, the Game Finder still works — it uses only your quiz answers, not your purchase history. You'll still receive useful recommendations, just without the library-aware boost.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Is my quiz history shared with third parties?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>No. Quiz answers and recommendation history are used solely to improve your own experience within Nintendo's ecosystem. They are never sold to or shared with third-party advertisers or publishers. Please review Nintendo's full Privacy Policy for comprehensive details on all data handling.</p>
+    </div>
+  </div>
+
+  <!-- TECHNICAL -->
+  <div class="faq-category-label" style="margin-top:48px;">Technical</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Which platforms support the Game Finder?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>The Game Finder is available on the Nintendo Switch eShop (all hardware variants including Switch, Switch Lite, and Switch OLED), the Nintendo eShop web portal, and the Nintendo Switch mobile app for iOS and Android. Results sync across all platforms when you're signed into your Nintendo Account.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Why isn't a specific game showing up in recommendations?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>A game won't appear if: (a) you already own it, (b) it's been filtered out due to regional availability, (c) it's not yet part of our recommendation catalog (new releases take 2–4 weeks to be scored), or (d) it simply wasn't the closest match to your profile. Try adjusting your quiz answers — sometimes a small shift reveals different suggestions.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      How often is the game catalog updated?
+      <span class="faq-chevron">▾</span>
+    </button>
+    <div class="faq-a">
+      <p>The recommendation catalog is updated weekly. New releases are reviewed and scored by our team within 2–4 weeks of launch. Major first-party Nintendo titles are fast-tracked and typically appear within days of release. You can always check the "New This Week" section on the main eShop for the very latest additions.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:36px; text-align:center; margin-top:56px;">
+    <div style="font-size:2rem; margin-bottom:12px;">🎮</div>
+    <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:8px;">Still have questions?</h3>
+    <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:20px;">Or just ready to find your next game? The quiz only takes two minutes.</p>
+    <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <a href="quiz.html" class="btn btn-primary">Take the Quiz →</a>
+      <a href="index.html" class="btn btn-secondary">Back to Home</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-text">© 2026 Nintendo of America Inc. &nbsp;·&nbsp; Concept prototype.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="quiz.html">Take the Quiz</a>
+      <a href="profile.html">My Profile</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggle(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>
