@@ -15,122 +15,63 @@
       object-fit: cover;
       display: block;
     }
-  </style>
-</head>
-<body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <div class="logo-mark">N</div>
-      eShop Game Finder
-    </a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="faq.html" class="nav-link">FAQ</a>
-      <a href="other-products.html" class="nav-link">Products</a>
-      <a href="profile.html" class="nav-link">My Profile</a>
-      <a href="quiz.html" class="nav-link quiz-cta">Take the Quiz</a>
-    </div>
-  </div>
-</nav>
+    /* ── Nintendo Switch hero ───────────────────────────── */
+    .switch-console {
+      display: flex;
+      align-items: stretch;
+      max-width: 940px;
+      margin: 40px auto 24px;
+      padding: 0 16px;
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.35));
+    }
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">✦ New eShop Feature — Concept</div>
-  <h1>Find Your <span>Perfect</span><br>Nintendo Game</h1>
-  <p>Answer three quick questions and our algorithm matches your playstyle to the best Switch games; personalized just for you.</p>
-  <div class="hero-actions">
-    <a href="quiz.html" class="btn btn-primary">▶ Take the Quiz</a>
-    <a href="faq.html" class="btn btn-secondary">Learn More</a>
-  </div>
-</div>
+    .joycon {
+      flex: 0 0 clamp(46px, 9vw, 76px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(20px, 4vw, 40px) 0;
+      position: relative;
+    }
+    .joycon-left {
+      background: linear-gradient(135deg, #28c0f5, #1591d6);
+      border-radius: 44px 8px 8px 44px;
+      box-shadow: inset 0 0 22px rgba(0,0,0,0.18);
+    }
+    .joycon-right {
+      background: linear-gradient(135deg, #ff4655, #e01b34);
+      border-radius: 8px 44px 44px 8px;
+      box-shadow: inset 0 0 22px rgba(0,0,0,0.18);
+    }
 
-<!-- HOW IT WORKS -->
-<section>
-  <div class="section-label">How It Works</div>
-  <div class="section-title">Three steps to your next favorite game</div>
-  <p class="section-sub">Our recommendation engine blends your quiz answers with your eShop purchase history to surface games you'll actually love.</p>
-  <div class="steps">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <div class="step-icon">🎮</div>
-      <h3>Answer Three Questions</h3>
-      <p>Tell us how you like to play: your preferred intensity, social style, and taste for storytelling.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <div class="step-icon">🧠</div>
-      <h3>We Analyze Your Taste</h3>
-      <p>Our engine cross-references your answers with your purchase history to build a unique taste profile.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <div class="step-icon">✨</div>
-      <h3>Get Personalized Picks</h3>
-      <p>Receive a top recommendation plus additional picks tailored to your profile, it'll be ready to download instantly.</p>
-    </div>
-  </div>
-</section>
-
-<!-- STATS BANNER -->
-<div class="stats-banner">
-  <div>
-    <div class="stat-big">6,800+</div>
-    <div class="stat-desc">Games oen Nintendo Switch eShop</div>
-  </div>
-  <div>
-    <div class="stat-big">94%</div>
-    <div class="stat-desc">User satisfaction with recommendations</div>
-  </div>
-  <div>
-    <div class="stat-big">3 min</div>
-    <div class="stat-desc">Average time to get your match</div>
-  </div>
-  <div>
-    <div class="stat-big">∞</div>
-    <div class="stat-desc">Retake whenever your mood changes</div>
-  </div>
-</div>
-
-<!-- FEATURED GAMES -->
-<section>
-  <div class="section-label">On the Radar</div>
-  <div class="section-title">Games you might discover</div>
-  <p class="section-sub">A sample of the Switch library waiting to be matched to your playstyle.</p>
-  <div class="games-grid">
-    <div class="game-card"><div class="game-cover"><img src="images/animal-crossing.jpg" alt="Animal Crossing: New Horizons"></div><div class="game-info"><div class="game-title">Animal Crossing: New Horizons</div><div class="game-genre">Life Simulation</div><div class="game-price">$59.99</div></div></div>
-    <div class="game-card"><div class="game-cover"><img src="images/zelda-botw.jpg" alt="Zelda: Breath of the Wild"></div><div class="game-info"><div class="game-title">Zelda: Breath of the Wild</div><div class="game-genre">Action Adventure</div><div class="game-price">$59.99</div></div></div>
-    <div class="game-card"><div class="game-cover"><img src="images/smash-bros.jpg" alt="Super Smash Bros. Ultimate"></div><div class="game-info"><div class="game-title">Super Smash Bros. Ultimate</div><div class="game-genre">Fighting</div><div class="game-price">$59.99</div></div></div>
-    <div class="game-card"><div class="game-cover"><img src="images/mario-kart-8.jpg" alt="Mario Kart 8 Deluxe"></div><div class="game-info"><div class="game-title">Mario Kart 8 Deluxe</div><div class="game-genre">Racing</div><div class="game-price">$59.99</div></div></div>
-    <div class="game-card"><div class="game-cover"><img src="images/kirby.jpg" alt="Kirby: Forgotten Land"></div><div class="game-info"><div class="game-title">Kirby: Forgotten Land</div><div class="game-genre">Platformer</div><div class="game-price">$59.99</div></div></div>
-    <div class="game-card"><div class="game-cover"><img src="images/xenoblade-3.jpg" alt="Xenoblade Chronicles 3"></div><div class="game-info"><div class="game-title">Xenoblade Chronicles 3</div><div class="game-genre">JRPG</div><div class="game-price">$59.99</div></div></div>
-    <div class="game-card"><div class="game-cover"><img src="images/pokemon-scarlet.jpg" alt="Pokémon Scarlet"></div><div class="game-info"><div class="game-title">Pokémon Scarlet</div><div class="game-genre">RPG</div><div class="game-price">$59.99</div></div></div>
-    <div class="game-card"><div class="game-cover"><img src="images/fire-emblem.jpg" alt="Fire Emblem: Three Houses"></div><div class="game-info"><div class="game-title">Fire Emblem: Three Houses</div><div class="game-genre">Strategy RPG</div><div class="game-price">$59.99</div></div></div>
-  </div>
-</section>
-
-<!-- CTA BAND -->
-<section style="text-align:center; padding-top:0;">
-  <div style="background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:52px 32px; max-width:640px; margin:0 auto;">
-    <div style="font-size:2.5rem; margin-bottom:16px;">🎯</div>
-    <h2 style="font-size:1.6rem; font-weight:900; margin-bottom:12px;">Ready to find your match?</h2>
-    <p style="color:var(--text-muted); margin-bottom:28px; font-size:0.95rem; line-height:1.6;">The quiz takes under two minutes. No account required to get started — your results are saved locally so you can revisit anytime.</p>
-    <a href="quiz.html" class="btn btn-primary" style="font-size:1rem; padding:15px 32px;">Start the Quiz →</a>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-text">© 2026 Nintendo of America Inc. &nbsp;·&nbsp; eShop Game Finder is a concept feature prototype.</div>
-    <div class="footer-links">
-      <a href="faq.html">FAQ</a>
-      <a href="other-products.html">Products</a>
-      <a href="profile.html">My Profile</a>
-      <a href="#">Privacy Policy</a>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+    /* Joy-Con controls (CSS-drawn) */
+    .stick {
+      width: clamp(20px, 3.6vw, 30px);
+      height: clamp(20px, 3.6vw, 30px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 32%, #5a5a5a, #161616);
+      border: 3px solid rgba(0,0,0,0.28);
+    }
+    .btn-cluster {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 3px;
+      width: clamp(30px, 5.4vw, 46px);
+      height: clamp(30px, 5.4vw, 46px);
+    }
+    .btn-cluster span {
+      border-radius: 50%;
+      background: rgba(0,0,0,0.22);
+    }
+    .dpad span:nth-child(2),
+    .dpad span:nth-child(4),
+    .dpad span:nth-child(6),
+    .dpad span:nth-child(8) { background: rgba(0,0,0,0.32); }
+    .dpad span:nth-child(1),
+    .dpad span:nth-child(3),
+    .dpad span:nth-child(5),
+    .dpad span:nth-child(7),
+    .dpad span:nth-child(9) { background: transparent; }
