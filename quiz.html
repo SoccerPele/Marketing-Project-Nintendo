@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Finder Quiz — Nintendo eShop</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .game-icon-xl,
+    .also-icon {
+      overflow: hidden;
+    }
+    .game-icon-xl img,
+    .also-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -142,24 +155,24 @@
 //   social     : 1=solo,    5=always multiplayer
 //   narrative  : 1=no story, 5=rich narrative
 const GAMES = [
-  { name:"Animal Crossing: New Horizons", relaxation:5, social:4, narrative:1, price:"$59.99", genre:"Life Simulation", icon:"🏝️", color:"#7BC67E", desc:"Create your dream island paradise. Fish, catch bugs, decorate your home, and visit friends online in this charming life simulator." },
-  { name:"Stardew Valley",                relaxation:5, social:2, narrative:3, price:"$14.99", genre:"Farm Simulation",  icon:"🌾", color:"#8BC34A", desc:"Escape to the countryside, build the farm of your dreams, and uncover the secrets of Pelican Town at your own pace." },
-  { name:"Zelda: Breath of the Wild",     relaxation:3, social:1, narrative:4, price:"$59.99", genre:"Action Adventure", icon:"🗡️", color:"#4CAF50", desc:"Explore a vast open world, solve creative puzzles, and uncover the legend of Calamity Ganon across Hyrule." },
-  { name:"Zelda: Tears of the Kingdom",   relaxation:3, social:1, narrative:5, price:"$69.99", genre:"Action Adventure", icon:"🌌", color:"#66BB6A", desc:"Build, fly, and fight your way across a transformed Hyrule in this massive sequel filled with mystery and invention." },
-  { name:"Super Smash Bros. Ultimate",    relaxation:1, social:5, narrative:1, price:"$59.99", genre:"Fighting",         icon:"🥊", color:"#F44336", desc:"Every fighter, every stage — the ultimate crossover brawl. Perfect for competitive nights and couch chaos." },
-  { name:"Mario Kart 8 Deluxe",           relaxation:3, social:5, narrative:1, price:"$59.99", genre:"Racing",           icon:"🏎️", color:"#FF9800", desc:"Race 96 tracks with friends and family. The most complete Mario Kart experience, perfect for any occasion." },
-  { name:"Splatoon 3",                    relaxation:2, social:4, narrative:2, price:"$59.99", genre:"Shooter",          icon:"🦑", color:"#FF5722", desc:"Ink your way to victory in colorful team battles. Paint the arena, splat opponents, and rise through the ranks." },
-  { name:"Pokémon Scarlet",               relaxation:3, social:3, narrative:3, price:"$59.99", genre:"RPG",              icon:"⚡", color:"#FFEB3B", desc:"Explore the open-world Paldea region, catch hundreds of Pokémon, and battle your way to become a Champion." },
-  { name:"Metroid Dread",                 relaxation:1, social:1, narrative:4, price:"$39.99", genre:"Action",           icon:"🚀", color:"#607D8B", desc:"Survive the hostile planet ZDR as Samus Aran in this intense, atmospheric Metroidvania thriller." },
-  { name:"Fire Emblem: Three Houses",     relaxation:3, social:1, narrative:5, price:"$59.99", genre:"Strategy RPG",     icon:"⚔️", color:"#9C27B0", desc:"Lead students, forge deep relationships, and guide them through a war that reshapes a continent's fate." },
-  { name:"Kirby: Forgotten Land",         relaxation:5, social:2, narrative:3, price:"$59.99", genre:"Platformer",       icon:"🌸", color:"#FF80AB", desc:"Kirby explores a mysterious post-civilisation world in this charming, accessible 3D platformer for all ages." },
-  { name:"Mario Party Superstars",        relaxation:4, social:5, narrative:1, price:"$59.99", genre:"Party",            icon:"🎉", color:"#E91E63", desc:"100 classic mini-games and beloved boards from the series' past. The definitive party game for groups." },
-  { name:"Super Mario Odyssey",           relaxation:4, social:1, narrative:2, price:"$59.99", genre:"Platformer",       icon:"🎩", color:"#E53935", desc:"Travel across incredible kingdoms with Cappy and collect Power Moons to save Princess Peach." },
-  { name:"Minecraft",                     relaxation:4, social:4, narrative:1, price:"$29.99", genre:"Sandbox",          icon:"⛏️", color:"#795548", desc:"Build, survive, and explore an infinite world. Play solo or team up with friends in creative or survival mode." },
-  { name:"Ring Fit Adventure",            relaxation:2, social:1, narrative:2, price:"$79.99", genre:"Fitness RPG",      icon:"💪", color:"#00BCD4", desc:"Defeat enemies using real physical exercises and progress through a fun RPG while actually working out." },
-  { name:"Xenoblade Chronicles 3",        relaxation:2, social:1, narrative:5, price:"$59.99", genre:"JRPG",             icon:"🌟", color:"#3F51B5", desc:"An emotionally rich JRPG epic spanning hundreds of hours, filled with unforgettable characters and battles." },
-  { name:"Pikmin 4",                      relaxation:4, social:1, narrative:3, price:"$59.99", genre:"Strategy",         icon:"🌿", color:"#66BB6A", desc:"Command adorable Pikmin creatures to explore, collect treasures, and rescue castaways in a charming strategy adventure." },
-  { name:"Luigi's Mansion 3",             relaxation:4, social:2, narrative:3, price:"$59.99", genre:"Adventure",        icon:"👻", color:"#43A047", desc:"Guide Luigi through a haunted hotel, vacuuming up ghosts and solving puzzles floor by floor." },
+  { name:"Animal Crossing: New Horizons", relaxation:5, social:4, narrative:1, price:"$59.99", genre:"Life Simulation", img:"images/animal-crossing.jpg", color:"#7BC67E", desc:"Create your dream island paradise. Fish, catch bugs, decorate your home, and visit friends online in this charming life simulator." },
+  { name:"Stardew Valley",                relaxation:5, social:2, narrative:3, price:"$14.99", genre:"Farm Simulation",  img:"images/stardew-valley.jpg", color:"#8BC34A", desc:"Escape to the countryside, build the farm of your dreams, and uncover the secrets of Pelican Town at your own pace." },
+  { name:"Zelda: Breath of the Wild",     relaxation:3, social:1, narrative:4, price:"$59.99", genre:"Action Adventure", img:"images/zelda-botw.jpg", color:"#4CAF50", desc:"Explore a vast open world, solve creative puzzles, and uncover the legend of Calamity Ganon across Hyrule." },
+  { name:"Zelda: Tears of the Kingdom",   relaxation:3, social:1, narrative:5, price:"$69.99", genre:"Action Adventure", img:"images/zelda-totk.jpg", color:"#66BB6A", desc:"Build, fly, and fight your way across a transformed Hyrule in this massive sequel filled with mystery and invention." },
+  { name:"Super Smash Bros. Ultimate",    relaxation:1, social:5, narrative:1, price:"$59.99", genre:"Fighting",         img:"images/smash-bros.jpg", color:"#F44336", desc:"Every fighter, every stage — the ultimate crossover brawl. Perfect for competitive nights and couch chaos." },
+  { name:"Mario Kart 8 Deluxe",           relaxation:3, social:5, narrative:1, price:"$59.99", genre:"Racing",           img:"images/mario-kart-8.jpg", color:"#FF9800", desc:"Race 96 tracks with friends and family. The most complete Mario Kart experience, perfect for any occasion." },
+  { name:"Splatoon 3",                    relaxation:2, social:4, narrative:2, price:"$59.99", genre:"Shooter",          img:"images/splatoon-3.jpg", color:"#FF5722", desc:"Ink your way to victory in colorful team battles. Paint the arena, splat opponents, and rise through the ranks." },
+  { name:"Pokémon Scarlet",               relaxation:3, social:3, narrative:3, price:"$59.99", genre:"RPG",              img:"images/pokemon-scarlet.jpg", color:"#FFEB3B", desc:"Explore the open-world Paldea region, catch hundreds of Pokémon, and battle your way to become a Champion." },
+  { name:"Metroid Dread",                 relaxation:1, social:1, narrative:4, price:"$39.99", genre:"Action",           img:"images/metroid-dread.jpg", color:"#607D8B", desc:"Survive the hostile planet ZDR as Samus Aran in this intense, atmospheric Metroidvania thriller." },
+  { name:"Fire Emblem: Three Houses",     relaxation:3, social:1, narrative:5, price:"$59.99", genre:"Strategy RPG",     img:"images/fire-emblem.jpg", color:"#9C27B0", desc:"Lead students, forge deep relationships, and guide them through a war that reshapes a continent's fate." },
+  { name:"Kirby: Forgotten Land",         relaxation:5, social:2, narrative:3, price:"$59.99", genre:"Platformer",       img:"images/kirby.jpg", color:"#FF80AB", desc:"Kirby explores a mysterious post-civilisation world in this charming, accessible 3D platformer for all ages." },
+  { name:"Mario Party Superstars",        relaxation:4, social:5, narrative:1, price:"$59.99", genre:"Party",            img:"images/mario-party.jpg", color:"#E91E63", desc:"100 classic mini-games and beloved boards from the series' past. The definitive party game for groups." },
+  { name:"Super Mario Odyssey",           relaxation:4, social:1, narrative:2, price:"$59.99", genre:"Platformer",       img:"images/mario-odyssey.jpg", color:"#E53935", desc:"Travel across incredible kingdoms with Cappy and collect Power Moons to save Princess Peach." },
+  { name:"Minecraft",                     relaxation:4, social:4, narrative:1, price:"$29.99", genre:"Sandbox",          img:"images/minecraft.jpg", color:"#795548", desc:"Build, survive, and explore an infinite world. Play solo or team up with friends in creative or survival mode." },
+  { name:"Ring Fit Adventure",            relaxation:2, social:1, narrative:2, price:"$79.99", genre:"Fitness RPG",      img:"images/ring-fit.jpg", color:"#00BCD4", desc:"Defeat enemies using real physical exercises and progress through a fun RPG while actually working out." },
+  { name:"Xenoblade Chronicles 3",        relaxation:2, social:1, narrative:5, price:"$59.99", genre:"JRPG",             img:"images/xenoblade-3.jpg", color:"#3F51B5", desc:"An emotionally rich JRPG epic spanning hundreds of hours, filled with unforgettable characters and battles." },
+  { name:"Pikmin 4",                      relaxation:4, social:1, narrative:3, price:"$59.99", genre:"Strategy",         img:"images/pikmin-4.jpg", color:"#66BB6A", desc:"Command adorable Pikmin creatures to explore, collect treasures, and rescue castaways in a charming strategy adventure." },
+  { name:"Luigi's Mansion 3",             relaxation:4, social:2, narrative:3, price:"$59.99", genre:"Adventure",        img:"images/luigis-mansion-3.jpg", color:"#43A047", desc:"Guide Luigi through a haunted hotel, vacuuming up ghosts and solving puzzles floor by floor." },
 ];
 
 // ── Slider description maps ────────────────────────────────────────────────
@@ -239,7 +252,7 @@ function showResults() {
 
   // Primary card
   document.getElementById('primaryRec').innerHTML = `
-    <div class="game-icon-xl" style="background:${top.color}22">${top.icon}</div>
+    <div class="game-icon-xl" style="background:${top.color}22"><img src="${top.img}" alt="${top.name}"></div>
     <div>
       <div class="rec-name">${top.name}</div>
       <div class="rec-genre-tag">${top.genre}</div>
@@ -251,7 +264,7 @@ function showResults() {
   // Secondary cards
   document.getElementById('secondaryRecs').innerHTML = second.map(g => `
     <div class="also-card">
-      <div class="also-icon">${g.icon}</div>
+      <div class="also-icon"><img src="${g.img}" alt="${g.name}"></div>
       <div>
         <div class="also-name">${g.name}</div>
         <div class="also-genre">${g.genre} · ${g.price}</div>
@@ -262,7 +275,7 @@ function showResults() {
   // Save to localStorage for Profile page
   localStorage.setItem('quizResult', JSON.stringify({
     answers,
-    top: { name: top.name, genre: top.genre, icon: top.icon, price: top.price },
+    top: { name: top.name, genre: top.genre, img: top.img, price: top.price },
     date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
   }));
 
